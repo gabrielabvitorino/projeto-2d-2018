@@ -7725,7 +7725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8238cc53530b64fbb7828c3d3bb591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1704624207}
   damping: 1
   lookAheadFactor: 3
   lookAheadReturnSpeed: 0.5
@@ -7782,11 +7782,11 @@ GameObject:
   - component: {fileID: 1704624207}
   - component: {fileID: 1704624206}
   - component: {fileID: 1704624205}
-  - component: {fileID: 1704624208}
-  - component: {fileID: 1704624210}
   - component: {fileID: 1704624209}
+  - component: {fileID: 1704624210}
+  - component: {fileID: 1704624208}
   m_Layer: 11
-  m_Name: Idle (8)
+  m_Name: Girl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7866,18 +7866,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1704624208
-BoxCollider:
+--- !u!61 &1704624208
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1704624204}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0816915, y: 0.009076834}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.35}
+    newSize: {x: 1.6, y: 1.35}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6618409, y: 1.2289474, z: 0.2}
-  m_Center: {x: -0.08171058, y: 0.0060527325, z: 0}
+  m_Size: {x: 0.64996195, y: 1.222925}
+  m_EdgeRadius: 0
 --- !u!114 &1704624209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7889,21 +7902,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172a5fa910f84714fa17c9b77f224aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &1704624210
-Rigidbody:
+  horizontalSpeed: 10
+  jumpSpeed: 600
+--- !u!50 &1704624210
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1704624204}
-  serializedVersion: 2
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 3.5
+  m_Material: {fileID: 6200000, guid: 64591ec7b7ebc6c4095bfe693c246ab7, type: 2}
   m_Interpolate: 0
-  m_Constraints: 0
+  m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1779874646
 GameObject:
   m_ObjectHideFlags: 0
