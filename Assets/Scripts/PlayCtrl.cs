@@ -10,9 +10,12 @@ public class PlayCtrl : MonoBehaviour {
 
     Rigidbody2D rb;
 
+    SpriteRenderer sr;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -36,6 +39,15 @@ public class PlayCtrl : MonoBehaviour {
     
     void MoveHorizontal(float speed) {
         rb.velocity = new Vector2(speed, rb.velocity.y);
+
+        if(speed < 0f) {
+            sr.flipX = true;
+        }
+
+        else if (speed > 0f)
+        {
+            sr.flipX = false;
+        }
     }
 
     void StopMovingHorizontal() {
