@@ -12,6 +12,10 @@ public class PlayCtrl : MonoBehaviour {
 
     SpriteRenderer sr;
 
+    Animator anim;
+
+    bool isJumping = false;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -35,6 +39,7 @@ public class PlayCtrl : MonoBehaviour {
             Jump();
         }
 
+        ShowFalling();
 	}
     
     void MoveHorizontal(float speed) {
@@ -48,13 +53,44 @@ public class PlayCtrl : MonoBehaviour {
         {
             sr.flipX = false;
         }
+
+        if (!isJumping)
+        {
+            anim.SetInteger("State", 2);
+        }
+       
     }
 
     void StopMovingHorizontal() {
         rb.velocity = new Vector2(0f, rb.velocity.y);
+        if (!isJumping)
+        {
+            anim.SetInteger("State", 0);
+        }
+    }
+
+    void ShowFalling()
+    {
+        if (rb.velocity.y < 0f)
+        {
+            anim.SetInteger("State", 3);
+        }
     }
 
     void Jump() {
         rb.AddForce(new Vector2(0f, jumpSpeed));
+        if (isJumping)
+        {
+            anim.SetInteger("State", 1);
+        }
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isJumping = false;
+        }
     }
 }
