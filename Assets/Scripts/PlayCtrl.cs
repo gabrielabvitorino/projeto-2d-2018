@@ -26,6 +26,10 @@ public class PlayCtrl : MonoBehaviour {
 
     public LayerMask whatIsGround;
 
+    bool canDoubleJump = false;
+
+    public float delayForDoubleJump = 0.2f;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -102,6 +106,16 @@ public class PlayCtrl : MonoBehaviour {
                     if (isJumping)
                     {
                         anim.SetInteger("State", 1);
+
+                        
+                        Invoke("EnableDoubleJump", delayForDoubleJump);
+                    }
+
+                    if(canDoubleJump && !isGrounded){
+                        rb.velocity = Vector2.zero;
+                        rb.AddForce(new Vector2(0f, jumpSpeed));
+                        anim.SetInteger("State", 1);
+                        canDoubleJump = false;
                     }
 }
         

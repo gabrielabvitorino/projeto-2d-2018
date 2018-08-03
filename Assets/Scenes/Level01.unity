@@ -7957,7 +7957,8 @@ MonoBehaviour:
   isGrounded: 0
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 512
+  delayForDoubleJump: 0.2
 --- !u!50 &1704624210
 Rigidbody2D:
   serializedVersion: 4
