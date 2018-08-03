@@ -139,6 +139,7 @@ public class PlayCtrl : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            SPXManager.instance.ShowCoinParticle(other.gameObject);
             Destroy(other.gameObject);
         }
     }
