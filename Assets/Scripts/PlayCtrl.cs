@@ -134,4 +134,12 @@ public class PlayCtrl : MonoBehaviour {
             isJumping = false;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }
