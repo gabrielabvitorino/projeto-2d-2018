@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4806219089572140}
-  - component: {fileID: 114822613120665928}
   - component: {fileID: 212322004726960206}
   - component: {fileID: 95672265840180982}
   - component: {fileID: 114568603443492856}
@@ -42,6 +41,7 @@ GameObject:
   - component: {fileID: 4876136681525206}
   - component: {fileID: 68545292843768436}
   - component: {fileID: 50394897104426126}
+  - component: {fileID: 114028147859580394}
   m_Layer: 11
   m_Name: Feet
   m_TagString: Untagged
@@ -115,7 +115,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61001039446153234
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0816915, y: 0.009076834}
@@ -150,7 +150,7 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -175,6 +175,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114028147859580394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1936180156087994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c41d3eab43f4040a2b03b676823de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114568603443492856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172a5fa910f84714fa17c9b77f224aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeed: 10
+  horizontalSpeed: 5
   jumpSpeed: 600
   feet: {fileID: 4876136681525206}
   feetWidth: 0.5
@@ -196,17 +207,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   delayForDoubleJump: 0.2
---- !u!114 &114822613120665928
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439713239737358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c41d3eab43f4040a2b03b676823de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212322004726960206
 SpriteRenderer:
   m_ObjectHideFlags: 1

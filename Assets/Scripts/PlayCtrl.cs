@@ -39,7 +39,7 @@ public class PlayCtrl : MonoBehaviour {
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(feet.position, new Vector3(0.5f, 0.05f, 0f));
+        Gizmos.DrawWireCube(feet.position, new Vector3(feetWidth, feetHeight, 0f));
     }
 
     // Update is called once per frame
@@ -110,27 +110,30 @@ public class PlayCtrl : MonoBehaviour {
             isJumping = true;
             AudioManager.instance.PlayJumpPickupSound(gameObject);
             rb.AddForce(new Vector2(0f, jumpSpeed));
-                    if (isJumping)
-                    {
-                        anim.SetInteger("State", 1);
+            anim.SetInteger("State", 1);
 
-                        
-                        Invoke("EnableDoubleJump", delayForDoubleJump);
-                    }
+            Invoke("EnableDoubleJump", delayForDoubleJump);
+            
+        }
 
-                    if(canDoubleJump && !isGrounded){
-                        rb.velocity = Vector2.zero;
-                        AudioManager.instance.PlayJumpPickupSound(gameObject);
-                        rb.AddForce(new Vector2(0f, jumpSpeed));
-                        anim.SetInteger("State", 1);
-                        canDoubleJump = false;
-                    }
-}
-        
-        
+        if (canDoubleJump && !isGrounded)
+        {
+            rb.velocity = Vector2.zero;
+            AudioManager.instance.PlayJumpPickupSound(gameObject);
+            rb.AddForce(new Vector2(0f, jumpSpeed));
+            anim.SetInteger("State", 1);
+            canDoubleJump = false;
+        }
+
+
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    void EnableDoubleJump()
+    {
+        canDoubleJump = true;
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {

@@ -10,7 +10,7 @@ public class SPXManager : MonoBehaviour {
 
     void Awake()
     {
-        if (instance == instance == null)
+        if (instance == null)
         {
             instance = this;
         }
