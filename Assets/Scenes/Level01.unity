@@ -1308,8 +1308,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 29, y: -17}
-  m_SizeDelta: {x: 301.5, y: 81.339}
+  m_AnchoredPosition: {x: -0.00064850063, y: -10.092804}
+  m_SizeDelta: {x: 924.23, y: 67.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366065546
 MonoBehaviour:
@@ -1337,7 +1337,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 50
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -7845,7 +7845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &792485352
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9398,6 +9398,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 1439713239737358, guid: 671c03d685097e94e8bb4c201eebcccb,
     type: 2}
   timeToRespawn: 2
+  maxTime: 120
   ui:
     gameOver:
       txtCoinCount: {fileID: 1682665739}

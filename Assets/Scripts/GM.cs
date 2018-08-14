@@ -16,6 +16,12 @@ public class GM : MonoBehaviour {
 
     public float timeToRespawn = 2f;
 
+    public float maxTime = 120f;
+
+    bool timerOn = true;
+
+    float timeLeft;
+
     public UI ui;
 
     GameData data = new GameData();
@@ -34,7 +40,8 @@ public class GM : MonoBehaviour {
         {
             RespawnPlayer();
         }
-        
+
+        timeLeft = maxTime;
 		
 	}
 	
@@ -48,13 +55,27 @@ public class GM : MonoBehaviour {
                 player = obj.GetComponent<PlayCtrl>();
             }
         }
-
+        UpdateTimer();
         DisplayHudData();
 	}
+
+    void UpdateTimer()
+    {
+        if (timerOn)
+        {
+            timeLeft = timeLeft - Time.deltaTime;
+            if(timeLeft <= 0f)
+            {
+                timeLeft = 0;
+                //GameOver();
+            }
+        }
+    }
 
     void DisplayHudData()
     {
         ui.hud.txtCoinCount.text = "x " + data.coinCount;
+        ui.hud.txtTimer.text = "Timer: " + timeLeft.ToString("F1");
     }
 
     public void IncrementCoinCount() {
