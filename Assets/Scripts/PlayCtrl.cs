@@ -147,6 +147,7 @@ public class PlayCtrl : MonoBehaviour {
         {
             AudioManager.instance.PlayCoinPickupSound(other.gameObject);
             SPXManager.instance.ShowCoinParticle(other.gameObject);
+            GM.instance.IncrementCoinCount();
             Destroy(other.gameObject);
         }
     }
