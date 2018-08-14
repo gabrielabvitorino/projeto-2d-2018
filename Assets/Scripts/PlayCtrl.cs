@@ -143,7 +143,7 @@ public class PlayCtrl : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Coin"))
         {
             AudioManager.instance.PlayCoinPickupSound(other.gameObject);
             SPXManager.instance.ShowCoinParticle(other.gameObject);
