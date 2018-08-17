@@ -89,7 +89,7 @@ public class GM : MonoBehaviour {
             if(timeLeft <= 0f)
             {
                 timeLeft = 0;
-                //GameOver();
+                GameOver();
             }
         }
     }
@@ -111,9 +111,26 @@ public class GM : MonoBehaviour {
         data.lifeCount--;
     }
 
+    public void GameOver()
+    {
+        timerOn = false;
+        ui.gameOver.txtCoinCount.text = "Coin: " + data.coinCount;
+        ui.gameOver.txtTimer.text = "Timer: " + timeLeft.ToString("F1");
+        ui.gameOver.GameOverPanel.SetActive(true);
+    }
+
     public void RespawnPlayer()
     {
         Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
+
+    public void LevelComplete()
+    {
+        Destroy(player.gameObject);
+        timerOn = false;
+        ui.levelComplete.txtCoinCount.text = "Coin: " + data.coinCount;
+        ui.levelComplete.txtTimer.text = "Timer: " + timeLeft.ToString("F1");
+        ui.levelComplete.LevelCompletePanel.SetActive(true);
     }
 
     public void KillPlayer()
@@ -128,9 +145,8 @@ public class GM : MonoBehaviour {
             }
             else
             {
-                //GameOver();
+                GameOver();
             }
-            Invoke("RespawnPlayer", timeToRespawn);
         }
     }
 }
