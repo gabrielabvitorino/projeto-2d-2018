@@ -26,4 +26,10 @@ public class AudioManager : MonoBehaviour {
         AudioSource.PlayClipAtPoint(audioPlayer.jump, obj.transform.position);
 
     }
+
+    public void PlayFailPickupSound(GameObject obj)
+    {
+        AudioSource.PlayClipAtPoint(audioSFX.fail, obj.transform.position);
+
+    }
 }

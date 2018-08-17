@@ -156,18 +156,28 @@ public class GM : MonoBehaviour {
     {
         if (player != null)
         {
+            StartCoroutine(MuteMusic(true, 0f));
+            AudioManager.instance.PlayFailPickupSound(player.gameObject);
             DisableAndPushPlayer();
             Destroy(player.gameObject, timeToKill);
             DecrementLives();
             if (data.lifeCount > 0)
             {
+                StartCoroutine(MuteMusic(false, timeToKill + timeToRespawn));
                 Invoke("RespawnPlayer", timeToKill + timeToRespawn);
             }
             else
             {
+                StartCoroutine(MuteMusic(false, timeToKill + timeToRespawn));
                 GameOver();
             }
         }
+    }
+
+    IEnumerator MuteMusic(bool value, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Camera.main.GetComponentInChildren<AudioSource>().mute = value;
     }
 
     void DisableAndPushPlayer()
