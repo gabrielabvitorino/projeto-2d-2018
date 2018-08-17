@@ -9,13 +9,15 @@ public class GM : MonoBehaviour {
 
     public float yMinLive = -10f;
 
-    public Transform spawnPoint;
-
-    public GameObject playerPrefab;
-
     PlayCtrl player;
 
     public float timeToRespawn = 2f;
+
+    public float timeToKill = 1.5f;
+
+    public Transform spawnPoint;
+
+    public GameObject playerPrefab;
 
     public float maxTime = 120f;
 
@@ -111,6 +113,23 @@ public class GM : MonoBehaviour {
         data.lifeCount--;
     }
 
+    public void KillPlayer()
+    {
+        if (player != null)
+        {
+            Destroy(player.gameObject);
+            DecrementLives();
+            if (data.lifeCount > 0)
+            {
+                Invoke("RespawnPlayer", timeToRespawn);
+            }
+            else
+            {
+                GameOver();
+            }
+        }
+    }
+
     public void GameOver()
     {
         timerOn = false;
@@ -133,20 +152,37 @@ public class GM : MonoBehaviour {
         ui.levelComplete.LevelCompletePanel.SetActive(true);
     }
 
-    public void KillPlayer()
+    public void HurtPlayer()
     {
         if (player != null)
         {
-            Destroy(player.gameObject);
+            DisableAndPushPlayer();
+            Destroy(player.gameObject, timeToKill);
             DecrementLives();
             if (data.lifeCount > 0)
             {
-                Invoke("RespawnPlayer", timeToRespawn);
+                Invoke("RespawnPlayer", timeToKill + timeToRespawn);
             }
             else
             {
                 GameOver();
             }
         }
+    }
+
+    void DisableAndPushPlayer()
+    {
+        player.transform.GetComponent<PlayCtrl>().enabled = false;
+        foreach (Collider2D c2d in player.transform.GetComponents<Collider2D>())
+        {
+            c2d.enabled = false;
+        }
+        foreach (Transform child in player.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.zero;
+        rb.AddForce(new Vector2(-150.0f, 400f));
     }
 }

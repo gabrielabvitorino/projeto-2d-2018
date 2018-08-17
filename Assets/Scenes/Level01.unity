@@ -9970,10 +9970,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yMinLive: -6
+  timeToRespawn: 2
+  timeToKill: 1.5
   spawnPoint: {fileID: 1309620272}
   playerPrefab: {fileID: 1439713239737358, guid: 671c03d685097e94e8bb4c201eebcccb,
     type: 2}
-  timeToRespawn: 2
   maxTime: 120
   ui:
     levelComplete:
